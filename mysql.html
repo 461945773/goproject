@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>留言板</title>
+    <link rel="stylesheet" href="">
+    <style>
+        table {
+            background: #dddfff;
+            margin: 5px;
+        }
+        form {
+            margin: 5px;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table border="1">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>内容</th>
+            <th>时间</th>
+        </tr>
+        {{range .}}
+        <tr>
+            <td>{{.Id}}</td>
+            <td>{{.Name}}</td>
+            <td>{{.Time}}</td>
+            <td>{{.Text}}</td>
+        </tr>
+        {{end}}
+    </table>
+
+    <form method="post">
+        姓名:
+        <input type="text" name="name" />
+        <br>内容:
+        <input type="text" name="content" />
+        <br>
+        <input type="submit" value="提交" />
+    </form>
+</body>
+
+</html>

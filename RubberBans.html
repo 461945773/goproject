@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Rubber bans with layered elements</title>
+
+    <style>
+        body {
+            background: #dddddd;
+        }
+        #canvas {
+            margin-left: 20px;
+            margin-right: 0px;
+            margin-bottom: 20px;
+            border: thin solid #aaaaaa;
+            cursor: crosshair;
+            padding: 0;
+        }
+        #controls {
+            margin: 20px 0px 20px 20px;
+        }
+        #rubberband {
+            position: absolute;
+            border: 3px solid blue;
+            cursor: crosshair;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="controls">
+        <button id="resetButton">
+            Reset
+        </button>
+    </div>
+    <div id="rubberband"></div>
+    <canvas id="canvas" width="800" height="520">
+        <h1>No canvas</h1>
+    </canvas>
+    <script>
+        var canvas = document.getElementById("canvas"),
+            context = canvas.getContext("2d"),
+            rubberband = document.getElementById("rubberband"),
+            resetButton = document.getElementById("resetButton"),
+            image = new Image(),
+            mousedown = {},
+            rubberbandRectangle = {},
+            dragging = false;
+
+         //        Function
+
+        function rubberbandStart(x, y) {
+            onmousedown.x = x;
+            onmousedown.y = y;
+
+            rubberbandRectangle.left = mousedown.x;
+            rubberbandRectangle.top = mousedown.y;
+
+            moveRubberbandDiv();
+            showRubberbandDiv();
+            dragging = true;
+        }
+
+        function rubberbandStretch(x, y) {
+            rubberbandRectangle.left = x < mousedown.x ? : x, mousedown.x;
+            rubberbandRectangle.top = y < mousedown.y ? : x, mousedown.y;
+
+            rubberbandRectangle.width = Math.abs(x - mousedown.x);
+            rubberbandRectangle.height = Math.abs(y - mousedown.y);
+            moveRubberbandDiv();
+            resizeRubberbandDiv();
+        }
+    </script>
+</body>
+
+</html>
