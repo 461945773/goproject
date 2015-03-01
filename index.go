@@ -18,7 +18,6 @@ func Echo(ws *websocket.Conn) {
 		}
 
 		fmt.Println("Received back from client: " + reply)
-
 		msg := "Received:  " + reply
 		fmt.Println("Sending to client: " + msg)
 

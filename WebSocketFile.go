@@ -8,7 +8,8 @@ import (
 )
 
 func main() {
-	fileServer := http.FileServer(http.Dir("/"))
+	fmt.Println("WebFile at :9510")
+	fileServer := http.FileServer(http.Dir("./"))
 	err := http.ListenAndServe(":9510", fileServer)
 	checkError(err)
 
